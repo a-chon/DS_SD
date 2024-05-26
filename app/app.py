@@ -57,16 +57,6 @@ def compatibility_data():
         data[type] = {'best_match': best_match, 'users': [user.name for user in users]}
     return jsonify(data)
 
-# @app.route('/compatibility/<mbti_type>')
-# def compatibility(mbti_type):
-#     compatibilities = session.query(Compatibility).filter(or_(Compatibility.mbti_type1==mbti_type, Compatibility.mbti_type2==mbti_type)).all()
-#     compatible_types = []
-#     for compatibility in compatibilities:
-#         if compatibility.mbti_type1 == mbti_type:
-#             compatible_types.append(compatibility.mbti_type2)
-#         else:
-#             compatible_types.append(compatibility.mbti_type1)
-#     return render_template('compatibility.html', mbti_type=mbti_type, compatible_types=compatible_types)
 
 
 if __name__ == '__main__':

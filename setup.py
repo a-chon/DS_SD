@@ -7,7 +7,7 @@ setuptools.setup(
     name="Illustrated_MBTI",
     version="0.0.1",
     author="MasumotoAmika",
-    author_email="Illustrated App MBTI",
+    author_email="s2222094@stu.musashino-u.ac.jp",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/a-chon/DS_SD",

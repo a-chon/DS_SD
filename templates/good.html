@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MBTI Compatibility</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #fff;
+        .type-card {
+            border: 1px solid #ccc;
+            padding: 16px;
+            margin: 16px;
+            display: inline-block;
+            text-align: center;
+        }
+        .type-card h2 {
+            margin: 0;
+        }
+        .type-card p {
+            margin: 8px 0 0;
+        }
+    }
+        header {
+        padding: 30px 4% 10px;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+    }
+        h1 {
+        margin: 0; padding: 0;
+        font-size: 20px;
+        }
+        a {	
+        text-decoration: none;
+        color: #4b4b4b;
+        }
+        nav {
+        margin: 0 0 0 auto;
+        }
+        ul {
+        list-style: none;
+        margin: 0;
+        display: flex;
+        }
+        li {
+        margin: 0 0 0 15px;
+        font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="pc-nav">
+            <ul>
+                <li><a href="/">登録</a></li>
+                <li><a href="/good_relationship">相性</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>MBTI Compatibility</h1>
+    <div id="compatibility-cards">
+    </div>
+    <script>
+        fetch('/compatibility_data')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('compatibility-cards');
+            for (const [type, info] of Object.entries(data)) {
+                const card = document.createElement('div');
+                card.className = 'type-card';
+
+                const typeHeading = document.createElement('h2');
+                typeHeading.textContent = type;
+
+                const matchParagraph = document.createElement('p');
+                matchParagraph.textContent = `Best match: ${info.best_match}`;
+
+                const usersList = document.createElement('ul');
+                for (const user of info.users) {
+                    const userItem = document.createElement('li');
+                    userItem.textContent = user;
+                    usersList.appendChild(userItem);
+                }
+
+                card.appendChild(typeHeading);
+                card.appendChild(matchParagraph);
+                card.appendChild(usersList);
+
+                container.appendChild(card);
+            }
+        });
+    </script>
+</body>
+</html>

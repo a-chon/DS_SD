@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/MBTI_Illustrated.egg-info/PKG-INFO
+src/MBTI_Illustrated.egg-info/SOURCES.txt
+src/MBTI_Illustrated.egg-info/dependency_links.txt
+src/MBTI_Illustrated.egg-info/entry_points.txt
+src/MBTI_Illustrated.egg-info/top_level.txt

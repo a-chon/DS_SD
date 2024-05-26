@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>MBTI Compatibility</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+    
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                background-color: #fff;
+            .type-card {
+                border: 1px solid #ccc;
+                padding: 16px;
+                margin: 16px;
+                display: inline-block;
+                text-align: center;
+            }
+            .type-card h2 {
+                margin: 0;
+            }
+            .type-card p {
+                margin: 8px 0 0;
+            }
+        }
+            header {
+            padding: 30px 4% 10px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+        }
+            h1 {
+            margin: 0; padding: 0;
+            font-size: 20px;
+            }
+            a {	
+            text-decoration: none;
+            color: #4b4b4b;
+            }
+            nav {
+            margin: 0 0 0 auto;
+            }
+            ul {
+            list-style: none;
+            margin: 0;
+            display: flex;
+            }
+            li {
+            margin: 0 0 0 15px;
+            font-size: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="pc-nav">
+                <ul>
+                    <li><a href="/">登録</a></li>
+                    <li><a href="/good_relationship">相性</a></li>
+                </ul>
+            </nav>
+        </header>
+    <h1>登録ページ</h1>
+    <form id="register-form">
+        名前: <input type="text" name="name"><br>
+        MBTI: <input type="text" name="mbti"><br>
+        <button type="submit">登録</button>
+    </form>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            fetch('/register', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        });
+    </script>
+</body>
+</html>
